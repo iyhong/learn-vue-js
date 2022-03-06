@@ -2,40 +2,37 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
   </head>
   <body>
     <div id="app">
-      <p>{{ num }}</p>
-      <p>{{doubleNum}}</p>
+      <p>{{num}}</p>
+      <button @click="addNum">increase</button>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
       new Vue({
-        el: "#app",
+        el: '#app',
         data: {
           num: 10,
         },
-        computed: {
-          doubleNum: function () {
-            return this.num * 2;
-          },
-        },
         watch: {
-          num: function (newValue, oldValue) {
-            this.fetchUserByNumber(newValue);
+          num() {
+            this.logText()
           },
         },
         methods: {
-          fetchUserByNumber: function (num) {
-            console.log(num);
-            // axios.get(num);
+          addNum() {
+            this.num++
+          },
+          logText() {
+            console.log('changed!')
           },
         },
-      });
+      })
     </script>
   </body>
 </html>
