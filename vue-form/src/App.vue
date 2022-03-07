@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   data() {
     return {
@@ -25,6 +27,17 @@ export default {
   methods: {
     submitForm() {
       console.log(this.username, this.password)
+      axios
+        .post('https://jsonplaceholder.typicode.com/users', {
+          username: this.username,
+          password: this.password,
+        })
+        .then((res) => {
+          console.log(res)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
     },
   },
 }
